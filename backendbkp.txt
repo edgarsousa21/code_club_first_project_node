@@ -1,0 +1,48 @@
+
+const express = require('express')
+const port = 3000
+const app = express()
+app.use(express.json())
+
+// app.get('/users', (request, response) =>{
+//     // const name = request.query.name
+//     // const age = request.query.age
+//     // console.log(name, age)
+
+//     const {name, age, profission} = request.query //Destructuring assignment
+//     return response.json({name, age, profission})
+
+//     // return response.send('Hello Express')
+// } )
+//===========================================================================================================================================
+// app.get('/users/:id', (request, response) =>{    
+//     const {id} = request.params
+//     console.log(id)
+//     //return response.send('Hello Express')
+
+//     return response.json({id})
+// } )
+//===========================================================================================================================================
+/*
+        - Query params => meusite.com/users?name=edgar&age=41  //FILTROS
+        - Route params => /users/2      //BUSCAR, DELETAR OU ATUALIZAR ALGO ESPECÍFICO 
+        - Request Body =>  {"name":"Edgar", "age":41}  
+        
+        - GET        => Buscar informação no back-end
+        - POST       => Criar informação no back-end
+        - PUT /PATCH => Atualizar /Alterar  informação no back-end
+        - DELETE     => Deletar informação no back-end
+
+*/
+
+app.get('/users', (request, response) =>{    
+    const {name, age} = request.body
+    console.log(request.body)
+
+    return response.json({name, age})
+} )
+
+app.listen(port, () => {
+    console.log(`😎 Server Started om Port ${port} 😎`)
+})
+
